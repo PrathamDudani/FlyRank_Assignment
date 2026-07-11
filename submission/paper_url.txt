@@ -1,3 +1,6 @@
-PASTE-YOUR-DEPLOYED-PAPER-URL-HERE
+**Week 1**
+
 Notebook 1: https://github.com/PrathamDudani/FlyRank_Assignment/blob/main/notebooks/01_first_look_and_discovery.ipynb
 Notebook 2: https://github.com/PrathamDudani/FlyRank_Assignment/blob/main/notebooks/02_your_first_readable_model.ipynb
+
+Research Question and Provisional Lane: https://github.com/PrathamDudani/FlyRank_Assignment/blob/main/work/notebooks/w01_research_question.ipynb
