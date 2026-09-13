@@ -1,0 +1,9 @@
+{
+  "base_rate": 0.5399,
+  "holdout_auc": 0.542,
+  "visibility_threshold_impressions_90d": 928.0,
+  "staleness_threshold_days_since_update": 22.0,
+  "gap_threshold_ctr_points": 0.4305036524413686,
+  "n_train_clients": 24,
+  "n_test_clients": 7
+}
