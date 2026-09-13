@@ -1,0 +1,16 @@
+[
+  {
+    "system":"Baseline rule (CTR gap)",
+    "auc":0.521,
+    "precision":0.569,
+    "recall":0.399,
+    "f1":0.469
+  },
+  {
+    "system":"Model (logistic regression)",
+    "auc":0.542,
+    "precision":0.576,
+    "recall":0.667,
+    "f1":0.618
+  }
+]
