@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta name="google-site-verification" content="I3BhhACzLJ-uD833oTpFE43UuwyGd3nyy5TuoSqZ_A4" />
+<meta name="google-site-verification" content="I3BhhACzLJ-uD833oTpFE43UuwyGd3nyy5TuoSqZ_A4" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Which Content Should You Refresh First? A Client-Grouped, Leakage-Audited Approach</title>
@@ -242,37 +243,54 @@
 <section id="abstract" class="abstract">
   <h2>Abstract</h2>
   <p>
-  Which of a client's existing pages is worth a reviewer's limited time to check for a refresh
-  first? Using FlyRank's anonymized 30,000-row content-performance starter dataset (32
-  pseudonymized clients, trailing-90-day metrics), this paper builds a six-feature logistic
-  regression to flag likely-declining pages, validated with a <strong>client-grouped
-  holdout</strong> so no client's other pages leak into its own test score. Under that honest
-  split the model reaches an AUC of <strong>0.542</strong> against a base rate of
-  <strong>0.540</strong> — a real but modest signal — yet it still beats a transparent CTR-gap
-  baseline rule on recall (<strong>0.667 vs 0.399</strong>) and F1 (<strong>0.618 vs
-  0.469</strong>) on the identical holdout. An error audit shows the model is most confidently
-  wrong on stale, near-zero-traffic pages, and most confidently over-reassured on large,
-  actively-updated pages that are in fact declining — a pattern that directly shapes the
-  five-archetype action playbook this paper ends with. The result is decision-support, not a
-  verdict: a ranked, reason-coded queue meant to sort a human reviewer's time, with explicit
-  no-go rules for anything this weak-to-modest signal should never be allowed to do alone.
+  FlyRank's own portfolio research states its thesis plainly: <a href="https://flyrank.ai" target="_blank" rel="noopener">FlyRank</a>'s March 2026 report
+  argues for content teams to &ldquo;refresh strong content before it decays&rdquo; — but across a
+  client's hundreds of live pages, deciding exactly which ones need that refresh first is the real
+  operational bottleneck behind that advice, and it is the case study this paper addresses. Using
+  FlyRank's anonymized 30,000-row content-performance starter dataset (32 pseudonymized clients,
+  trailing-90-day metrics), this paper builds a six-feature logistic regression to flag
+  likely-declining pages, validated with a <strong>client-grouped holdout</strong> so no client's
+  other pages leak into its own test score. Under that honest split the model reaches an AUC of
+  <strong>0.542</strong> against a base rate of <strong>0.540</strong> — a real but modest signal
+  — yet it still beats a transparent CTR-gap baseline rule on recall (<strong>0.667 vs
+  0.399</strong>) and F1 (<strong>0.618 vs 0.469</strong>) on the identical holdout. An error
+  audit shows the model is most confidently wrong on stale, near-zero-traffic pages, and most
+  confidently over-reassured on large, actively-updated pages that are in fact declining — a
+  pattern that directly shapes the five-archetype action playbook this paper ends with. The
+  result is decision-support, not a verdict: a ranked, reason-coded queue meant to operationalize
+  FlyRank's own refresh-before-decay thesis at the level of one reviewer's actual workday, with
+  explicit no-go rules for anything this weak-to-modest signal should never be allowed to do
+  alone.
   </p>
 </section>
 
 <section id="intro">
   <h2>Introduction</h2>
   <p>
-  A content editor opens their dashboard on a Monday morning with 2,000 live pages and one hour
-  to spend on review. Some pages are quietly losing traffic; most aren't. Scanning by hand is
-  slow and inconsistent; trusting search-console rank alone misses pages that rank fine but have
-  stopped converting clicks. The decision this paper supports is narrow and practical:
+  <strong>The case study, stated plainly.</strong> FlyRank's own March 2026 research report
+  studies 341,701 content pieces across 57 brands and lands on a simple operating thesis:
+  well-performing content should be refreshed before it decays, rather than left to decline and
+  rebuilt from scratch later. That thesis is easy to state and hard to operationalize — at that
+  scale, no reviewer is manually triaging hundreds of thousands of pages one at a time, and a
+  refresh cycle spent on the wrong pages is editorial time that didn't need spending. The gap
+  between "refresh strong content before it decays" as portfolio-level advice and "which of
+  <em>these</em> pages do I open first this morning" as a Monday-morning task is exactly the
+  operational problem this paper works on, at the scale of a single client's content set.
+  </p>
+  <p>
+  A content editor opens their dashboard with hundreds of live pages and one hour to spend on
+  review. Some pages are quietly losing traffic; most aren't. Scanning by hand is slow and
+  inconsistent; trusting search-console rank alone misses pages that rank fine but have stopped
+  converting clicks. The decision this paper supports is narrow and practical:
   <strong>given everything we can measure about a page in the last 90 days, which pages should a
   human look at first?</strong>
   </p>
   <p>
   This is deliberately not a paper about predicting search rankings, nor about automating
   content decisions. It is about turning noisy signal into an honestly-scored, reason-coded
-  queue — and being equally explicit about where that queue should <em>not</em> be trusted.
+  queue that makes FlyRank's own refresh-before-decay thesis actionable at the level of one
+  reviewer's actual workday — and being equally explicit about where that queue should <em>not</em>
+  be trusted.
   </p>
 </section>
 
